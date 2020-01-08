@@ -1,0 +1,66 @@
+body {
+  /*background-color: #f5ffff;*/
+  color: #595959;
+}
+
+.topBar {
+  text-align: center;
+  font-size: 60px;
+  padding-top: 40px;
+}
+
+.updateData {
+  text-align: center;
+  padding-top: 40px;
+  font-size: 28px;
+}
+
+#pastRes {
+  width: 600px;
+  font-size: 24px;
+  padding-left: 4px;
+  padding-right: 4px;
+  margin-right: 5px;
+}
+
+#parseBtn {
+  margin-left: 20px;
+}
+
+.genBDiv {
+  text-align: center;
+}
+
+#genButton {
+  margin-top: 50px;
+  width: 140px;
+  height: 140px;
+  font-size: 24px;
+  border-radius: 70px;
+  color: white;
+  background-color: #ff0000;
+  cursor: pointer;
+  border: medium solid #e60000;
+  padding: 0px;
+}
+
+#genButton:hover {
+  opacity: 0.7;
+}
+
+.genDisplay {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+  width: 240px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.instructStep {
+  text-align: center;
+  padding-top: 30px;
+  font-size: 18px;
+}
