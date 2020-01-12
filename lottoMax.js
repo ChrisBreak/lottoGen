@@ -12,6 +12,7 @@ window.onload = function() {
 
   genBtn = document.getElementById('genButton');
   genListDiv = document.getElementById('genList');
+  //checkBtn = document.getElementById('checkButton');
 
   maxHistory.reverse();
   //console.log(maxHistory);
@@ -121,4 +122,34 @@ window.onload = function() {
       genListDiv.innerHTML += '<br>';
     }
   }
+
+  /*
+  checkBtn.onclick = function() {
+    for (var a = 1; a < 51; a++) {
+      console.log(a);
+      for (var b = a+1; b < 51; b++) {
+        for (var c = b+1; c < 51; c++) {
+          for (var d = c+1; d < 51; d++) {
+            for (var e = d+1; e < 51; e++) {
+              for (var f = e+1; f < 51; f++) {
+
+                  for (var i = 0; i < maxHistory.length; i++) {
+                    //main numbers
+                    var seq = maxHistory[i].main.split(" ");
+                    var count = 0;
+                    for (var j=0; j < seq.length; j++) {
+                      var num = +seq[j];
+                      if ((num === a) || (num === b) || (num === c) || (num === d) || (num === e) || (num === f)) count++;
+                    }
+                    if (count > 2) break;
+                    else if (i === (maxHistory.length-1)) console.log("seq not shown before: " + a + " " + b + " " + c + " " + d + " " + e + " " + f);
+                  }
+
+              }
+            }
+          }
+        }
+      }
+    }
+  } */
 };
