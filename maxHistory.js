@@ -1,4 +1,7 @@
 let maxHistory = [
+  {date:"March 20 2020", main:"9 16 17 18 21 22 27", bonus:"31"},
+  {date:"March 17 2020", main:"4 5 8 15 27 41 48", bonus:"27"},
+  {date:"March 13 2020", main:"7 14 15 35 36 49 50", bonus:"11"},
   {date:"March 10 2020", main:"5 6 27 37 38 46 48", bonus:"9"},
   {date:"March 6 2020", main:"2 9 10 35 41 42 47", bonus:"40"},
   {date:"March 3 2020", main:"10 14 15 25 27 39 48", bonus:"28"},
