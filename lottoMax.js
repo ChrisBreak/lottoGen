@@ -181,7 +181,7 @@ window.onload = function() {
       }
 
       //add newSeq to genList
-      if (goodRatio && noCons && goodRep && !genList.includes(newSeq)) { // && (rep3Count < 15) && !newSeq.includes(50)) {
+      if (goodRatio && noCons && goodRep && !genList.includes(newSeq)) { // && (rep3Count < 25)) { // && !newSeq.includes(50)) {
         genList.push(newSeq);
         console.log("matches of 3 for " + newSeq + " : " + rep3Count);
       }

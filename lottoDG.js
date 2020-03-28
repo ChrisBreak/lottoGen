@@ -1,4 +1,4 @@
-let genBtn, genList, under15, numZeros, theRest, genListDiv;
+let genBtn, genList, under15, under7, theRest, genListDiv, tempUnder15, tempRest, tempUnder7, tempStats;
 let mainCount = {
   '1':0, '2':0, '3':0, '4':0, '5':0, '6':0, '7':0, '8':0, '9':0, '10':0,
   '11':0, '12':0, '13':0, '14':0, '15':0, '16':0, '17':0, '18':0, '19':0, '20':0,
@@ -11,6 +11,7 @@ let grandCount = {
 };
 let mainFreq = JSON.parse(JSON.stringify(mainCount)); //this makes a deep copy
 let grandFreq = JSON.parse(JSON.stringify(grandCount));
+let tempCount = JSON.parse(JSON.stringify(mainCount));
 
 window.onload = function() {
 
@@ -52,6 +53,62 @@ window.onload = function() {
     grandCount[gn] = 0;
     grandFreq[gn]++;
   }
+
+  tempStats = [];
+
+  for (var k = (dgHistory.length - 340); k < dgHistory.length; k++) {
+    var seq = dgHistory[k].main.split("-");
+
+    if (k > (dgHistory.length - 301)) {
+      tempUnder7 = [];
+      tempUnder15 = [];
+      tempRest = [];
+
+      for (var el in tempCount) {
+        if (tempCount[el] < 7) tempUnder7.push(el);
+        else if (tempCount[el] < 15) tempUnder15.push(el);
+        else tempRest.push(el);
+      }
+      var grA = 0;
+      var grB = 0;
+      var grC = 0;
+      for (var j = 0; j < seq.length; j++) {
+        if (tempUnder7.includes(seq[j])) grA++;
+        else if (tempUnder15.includes(seq[j])) grB++;
+        else grC++;
+      }
+      let newStat = {date: dgHistory[k].date, under7: grA, under15: grB, aboveIn15: grC};
+      tempStats.push(newStat);
+    }
+
+    for (var el in tempCount) {
+        tempCount[el]++;
+    }
+    for (var j=0; j < seq.length; j++) {
+      tempCount[seq[j]] = 0;
+    }
+  }
+
+  var seq311 = 0;
+  var seq302 = 0;
+  var seq320 = 0;
+  var seq410 = 0;
+  var seq401 = 0;
+  var seq230 = 0;
+  var seq221 = 0;
+  var seq212 = 0;
+
+  for (var el in tempStats) {
+    if ((tempStats[el].under7 === 3) && (tempStats[el].under15 === 1) && (tempStats[el].aboveIn15 === 1)) seq311++;
+    else if ((tempStats[el].under7 === 3) && (tempStats[el].under15 === 0) && (tempStats[el].aboveIn15 === 2)) seq302++;
+    else if ((tempStats[el].under7 === 3) && (tempStats[el].under15 === 2) && (tempStats[el].aboveIn15 === 0)) seq320++;
+    else if ((tempStats[el].under7 === 4) && (tempStats[el].under15 === 1) && (tempStats[el].aboveIn15 === 0)) seq410++;
+    else if ((tempStats[el].under7 === 4) && (tempStats[el].under15 === 0) && (tempStats[el].aboveIn15 === 1)) seq401++;
+    else if ((tempStats[el].under7 === 2) && (tempStats[el].under15 === 3) && (tempStats[el].aboveIn15 === 0)) seq230++;
+    else if ((tempStats[el].under7 === 2) && (tempStats[el].under15 === 2) && (tempStats[el].aboveIn15 === 1)) seq221++;
+    else if ((tempStats[el].under7 === 2) && (tempStats[el].under15 === 1) && (tempStats[el].aboveIn15 === 2)) seq212++;
+  }
+
   //print number overdue status
   console.log("main number overdue status: ");
   console.log(mainCount);
@@ -61,12 +118,14 @@ window.onload = function() {
   console.log(mainFreq);
   console.log("grand numbers frequencies: ");
   console.log(grandFreq);
+
   console.log("even/odd ratio 0/5: " + evenR0);
   console.log("even/odd ratio 1/4: " + evenR1);
   console.log("even/odd ratio 2/3: " + evenR2);
   console.log("even/odd ratio 3/2: " + evenR3);
   console.log("even/odd ratio 4/1: " + evenR4);
   console.log("even/odd ratio 5/0: " + evenR5);
+
 
   under7 = [];
   under15 = [];
@@ -84,14 +143,22 @@ window.onload = function() {
   console.log(under15);
   console.log("numbers with overdue of 15 and above: ");
   console.log(theRest);
-
-
+  console.log("main number overdue statuses by date: ");
+  console.log(tempStats.reverse());
+  console.log("main number overdue pattern 3 1 1: " + seq311);
+  console.log("main number overdue pattern 3 0 2: " + seq302);
+  console.log("main number overdue pattern 3 2 0: " + seq320);
+  console.log("main number overdue pattern 4 1 0: " + seq410);
+  console.log("main number overdue pattern 4 0 1: " + seq401);
+  console.log("main number overdue pattern 2 3 0: " + seq230);
+  console.log("main number overdue pattern 2 2 1: " + seq221);
+  console.log("main number overdue pattern 2 1 2: " + seq212);
 
 
   genBtn.onclick = function() {
     genList = [];
 
-    while (genList.length < 40) {
+    while (genList.length < 20) {
       //console.log("genList length: " + genList.length);
       var newSeq = [];
       //add number with overdue status between 7-14 to sequence

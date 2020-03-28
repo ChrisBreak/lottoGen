@@ -55,7 +55,7 @@ window.onload = function() {
   genBtn.onclick = function() {
     genList = [];
 
-    while (genList.length < 40) {
+    while (genList.length < 20) {
       //console.log("genList length: " + genList.length);
       var newSeq = [];
       //add number with overdue status of 0
