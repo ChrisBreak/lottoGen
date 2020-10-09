@@ -122,7 +122,7 @@ window.onload = function() {
   genBtn.onclick = function() {
     genList = [];
 
-    while (genList.length < 10) {
+    while (genList.length < 15) {
       //console.log("genList length: " + genList.length);
       var newSeq = [];
       //add number with overdue status of 0
@@ -183,7 +183,7 @@ window.onload = function() {
       //add newSeq to genList
       if (goodRatio && noCons && goodRep && !genList.includes(newSeq)) { // && (rep3Count < 25)) { // && !newSeq.includes(50)) {
         genList.push(newSeq);
-        //console.log("matches of 3 for " + newSeq + " : " + rep3Count);
+        console.log("matches of 3 for " + newSeq + " : " + rep3Count);
       }
     }
     console.log("number sequences generated: ");
