@@ -108,16 +108,16 @@ window.onload = function() {
   console.log(under13);
   console.log("numbers with overdue of 13 and above: ");
   console.log(theRest);
-  console.log("main number overdue statuses by date: ");
+  console.log("main number patterns by date: ");
   console.log(tempStats.reverse());
-  console.log("main number overdue pattern 1 5 1: " + seq151);
-  console.log("main number overdue pattern 0 6 1: " + seq061);
-  console.log("main number overdue pattern 1 6 0: " + seq160);
-  console.log("main number overdue pattern 0 7 0: " + seq070);
-  console.log("main number overdue pattern 2 4 1: " + seq241);
-  console.log("main number overdue pattern 2 5 0: " + seq250);
-  console.log("main number overdue pattern 1 4 2: " + seq142);
-  console.log("main number overdue pattern 0 5 2: " + seq052);
+  console.log("main number frequency for pattern 1 5 1: " + seq151);
+  console.log("main number frequency for pattern 0 6 1: " + seq061);
+  console.log("main number frequency for pattern 1 6 0: " + seq160);
+  console.log("main number frequency for pattern 0 7 0: " + seq070);
+  console.log("main number frequency for pattern 2 4 1: " + seq241);
+  console.log("main number frequency for pattern 2 5 0: " + seq250);
+  console.log("main number frequency for pattern 1 4 2: " + seq142);
+  console.log("main number frequency for pattern 0 5 2: " + seq052);
 
   genBtn.onclick = function() {
     genList = [];
