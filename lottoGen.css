@@ -20,7 +20,7 @@ body {
 }
 
 #genButton {
-  margin-top: 50px;
+  margin-top: 10px;
   width: 140px;
   height: 140px;
   font-size: 24px;
@@ -36,6 +36,23 @@ body {
   opacity: 0.7;
 }
 
+#patternDrop {
+  padding: 0px;
+  padding-left: 8px;
+  height: 32px;
+  font-size: 16px;
+  color: #595959;
+}
+
+#selectDiv {
+  width: 180px;
+  text-align: center;
+}
+
+.input-group-prepend {
+  height: 32px;
+}
+
 .genDisplay {
   color: #595959;
   padding-top: 10px;
@@ -46,10 +63,12 @@ body {
   width: 240px;
   margin-top: 40px;
   margin-bottom: 40px;
+  font-size: 14px;
 }
 
 .instructStep {
   text-align: center;
   padding-top: 30px;
-  font-size: 18px;
+  font-size: 16px;
+  margin-bottom: 30px;
 }

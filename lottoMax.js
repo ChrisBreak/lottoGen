@@ -1,4 +1,4 @@
-let genBtn, genList, under13, zeros, theRest, genListDiv, tempZeros, tempUnder13, tempRest, tempStats;
+let genBtn, genList, under13, zeros, theRest, genListDiv, tempZeros, tempUnder13, tempRest, tempStats, patternPick;
 let mainCount = {
   '1':0, '2':0, '3':0, '4':0, '5':0, '6':0, '7':0, '8':0, '9':0, '10':0,
   '11':0, '12':0, '13':0, '14':0, '15':0, '16':0, '17':0, '18':0, '19':0, '20':0,
@@ -13,6 +13,7 @@ window.onload = function() {
 
   genBtn = document.getElementById('genButton');
   genListDiv = document.getElementById('genList');
+  patternPick = document.getElementById('patternDrop');
   //checkBtn = document.getElementById('checkButton');
 
   maxHistory.reverse();
@@ -121,27 +122,27 @@ window.onload = function() {
 
   genBtn.onclick = function() {
     genList = [];
-
+    let patternSeq = patternPick.value.split("-");
     while (genList.length < 15) {
       //console.log("genList length: " + genList.length);
       var newSeq = [];
       //add number with overdue status of 0
-      newSeq.push(+zeros[Math.floor(Math.random() * zeros.length)]);
-
-      /*
-      //for pattern 2 5 0
-      while (newSeq.length < 2) {
+      for (i = 0; i < (+patternSeq[0]); i++) {
         var newNum = +zeros[Math.floor(Math.random() * zeros.length)];
         if (!newSeq.includes(newNum)) newSeq.push(newNum);
-      }*/
-
-      //add number with overdue status of 13 and above
-      newSeq.push(+theRest[Math.floor(Math.random() * theRest.length)]);
-
-      //add numbers with overdue status under 13
-      while (newSeq.length < 7) {
+        else i--;
+      }
+      //add number with overdue status of under 13
+      for (i = 0; i < (+patternSeq[1]); i++) {
         var newNum = +under13[Math.floor(Math.random() * under13.length)];
         if (!newSeq.includes(newNum)) newSeq.push(newNum);
+        else i--;
+      }
+      //add number with overdue status of 13 and above
+      for (i = 0; i < (+patternSeq[2]); i++) {
+        var newNum = +theRest[Math.floor(Math.random() * theRest.length)];
+        if (!newSeq.includes(newNum)) newSeq.push(newNum);
+        else i--;
       }
 
       //check odd-even ratio in newSeq
