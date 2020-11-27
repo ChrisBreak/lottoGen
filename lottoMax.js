@@ -204,6 +204,7 @@ window.onload = function() {
 
   //this code is to find sequences with up to 6 numbers that haven't shown up together
   /*checkBtn.onclick = function() {
+
     for (var a = 1; a < 51; a++) {
       console.log(a);
       for (var b = a+1; b < 51; b++) {
@@ -230,5 +231,20 @@ window.onload = function() {
         }
       }
     }
-  } */
+
+    let sumList = [];
+    //calculate number frequencies sums
+    for (var i = 0; i < maxHistory.length; i++) {
+      //main numbers
+      var seq = maxHistory[i].main.split(" ");
+      var currentSum = 0;
+      for (var j=0; j < seq.length; j++) {
+        currentSum += +seq[j];
+      }
+      sumList.push(currentSum);
+    }
+    console.log(sumList);
+    let average = (array) => array.reduce((a, b) => a + b) / array.length;
+    console.log(Math.floor(average(sumList)));
+  }*/
 };
