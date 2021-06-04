@@ -14,20 +14,29 @@
       <span>Click the Generate button to get a list of potential winning numbers for the Lotto Max!</span>
     </div>
     <center>
-    <div class="input-group" id="selectDiv">
-      <div class="input-group-prepend">
-        <label class="input-group-text" for="patternDrop">Pattern</label>
+      <div class="input-group" id="selectDiv">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="patternDrop">Pattern</label>
+        </div>
+        <select class="custom-select" id="patternDrop">
+          <option value="1-6-0">1-6-0</option>
+          <option value="0-6-1">0-6-1</option>
+          <option value="1-5-1">1-5-1</option>
+          <option value="2-5-0">2-5-0</option>
+          <option value="2-4-1">2-4-1</option>
+          <option value="1-4-2">1-4-2</option>
+          <option value="0-7-0">0-7-0</option>
+        </select>
       </div>
-      <select class="custom-select" id="patternDrop">
-        <option value="1-6-0">1-6-0</option>
-        <option value="0-6-1">0-6-1</option>
-        <option value="1-5-1">1-5-1</option>
-        <option value="2-5-0">2-5-0</option>
-        <option value="2-4-1">2-4-1</option>
-        <option value="1-4-2">1-4-2</option>
-        <option value="0-7-0">0-7-0</option>
-      </select>
-    </div>
+      <div class="input-group" id="selectDiv">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="missA10Drop">Miss 10s</label>
+        </div>
+        <select class="custom-select" id="missA10Drop">
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
     </center>
     <div class="genBDiv">
       <button id="genButton">Generate</button>

@@ -1,4 +1,4 @@
-let genBtn, genList, under13, zeros, theRest, genListDiv, tempZeros, tempUnder13, tempRest, tempStats, patternPick;
+let genBtn, genList, under13, zeros, theRest, genListDiv, tempZeros, tempUnder13, tempRest, tempStats, patternPick, totalGenList, missA10;
 let mainCount = {
   '1':0, '2':0, '3':0, '4':0, '5':0, '6':0, '7':0, '8':0, '9':0, '10':0,
   '11':0, '12':0, '13':0, '14':0, '15':0, '16':0, '17':0, '18':0, '19':0, '20':0,
@@ -11,9 +11,11 @@ let tempCount = JSON.parse(JSON.stringify(mainCount));
 
 window.onload = function() {
 
+  totalGenList = [];
   genBtn = document.getElementById('genButton');
   genListDiv = document.getElementById('genList');
   patternPick = document.getElementById('patternDrop');
+  missA10 = document.getElementById('missA10Drop');
   //checkBtn = document.getElementById('checkButton');
 
   maxHistory.reverse();
@@ -164,9 +166,10 @@ window.onload = function() {
 
       newSeq.sort(function(a, b){return a-b});
 
-      //check if more than 3 numbers in newSeq have shown up before
+      //check if more than 3-4 numbers in newSeq have shown up before
       var goodRep = true;
-      var rep3Count = 0;
+      //var rep3Count = 0;
+      var rep4Count = 0;
       for (var i = 0; i < maxHistory.length; i++) {
         var oldSeq = maxHistory[i].main.split(" ");
         var repCount = 0;
@@ -174,17 +177,48 @@ window.onload = function() {
           var seqNum = +oldSeq[j];
           if (newSeq.includes(seqNum)) repCount++;
         }
-        if (repCount > 3) {
+        if (repCount > 4) {
           goodRep = false;
           break;
         }
-        else if (repCount === 3) rep3Count++;
+        //else if (repCount === 3) rep3Count++;
+        else if (repCount === 4) {
+          rep4Count++;
+          if (rep4Count > 2) {
+            goodRep = false;
+            break;
+          }
+        }
       }
 
+      //check if numbers are in all 10s (eg. under 10, 10s, 20s, 30s, etc.)
+      var condition10s = false;
+      var missing10s = true;
+      var inTheZeros = false;
+      var inThe10s = false;
+      var inThe20s = false;
+      var inThe30s = false;
+      var inThe40s = false; //includes 50
+      for (var numVal in newSeq) {
+        if (newSeq[numVal] < 10) inTheZeros = true;
+        else if ((newSeq[numVal] > 9) && (newSeq[numVal] < 20)) inThe10s = true;
+        else if ((newSeq[numVal] > 19) && (newSeq[numVal] < 30)) inThe20s = true;
+        else if ((newSeq[numVal] > 29) && (newSeq[numVal] < 40)) inThe30s = true;
+        else if ((newSeq[numVal] > 39) && (newSeq[numVal] < 51)) inThe40s = true;
+      }
+
+      if (inTheZeros && inThe10s && inThe20s && inThe30s && inThe40s) missing10s = false;
+
+      //check condition10s according to user selection
+      if ((missA10.value == "Yes") && missing10s) condition10s = true;
+      else if ((missA10.value == "No") && !missing10s) condition10s = true;
+
       //add newSeq to genList
-      if (goodRatio && noCons && goodRep && !genList.includes(newSeq)) { // && (rep3Count < 25)) { // && !newSeq.includes(50)) {
+      if (goodRatio && noCons && goodRep && condition10s && !genList.includes(newSeq) && !totalGenList.includes(newSeq)) { // && (rep3Count < 25)) { // && !newSeq.includes(50)) {
         genList.push(newSeq);
-        console.log("matches of 3 for " + newSeq + " : " + rep3Count);
+        totalGenList.push(newSeq);
+        //console.log("matches of 3 for " + newSeq + " : " + rep3Count);
+        console.log("matches of 4 for " + newSeq + " : " + rep4Count);
       }
     }
     console.log("number sequences generated: ");
